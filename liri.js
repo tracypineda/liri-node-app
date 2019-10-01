@@ -51,10 +51,14 @@ switch (command) {
             console.log("pick a movie");
         }
         break;
+    case "band":
+        if(inputPara == undefined || inputPara == "") {
+            inputPara = "The Jonas Brothers";
+        }
     default:
         console.log("{Please enter a command: spotify, movie, or band ");
         break;
-}
+    }
 
 function spotifySong(song) {
     spotify.search({ type: 'track', query: song, limit: 1 }, function (error, data) {
@@ -87,23 +91,41 @@ function omdbData(movie) {
        // If the axios was successful...
        // Then log the body from the site!
        console.log(chalk.whiteBright.bgMagenta("-----------------------------------------\n"));
-       console.log(chalk.bold("\n * Title of the movie: ") + response.data.Title);
-       console.log(chalk.bold("\n * Year the movie came out: ") + response.data.Year);
-       console.log(chalk.bold("\n * IMDB Rating: ") + response.data.Ratings[0].Value);
-       console.log(chalk.bold("\n * Rotten Tomatoes Rating: ") + response.data.Ratings[1].Value);
-       console.log(chalk.bold("\n * Country where the movie was produced: ") + response.data.Country);
-       console.log(chalk.bold("\n * Language(s): ") + response.data.Language);
-       console.log(chalk.bold("\n * Plot of the movie: ") + response.data.Plot);
-       console.log(chalk.bold("\n * Actors: ") + response.data.Actors + "\n");
+       console.log(chalk.bold.green("\n * Title of the movie: ") + response.data.Title);
+       console.log(chalk.bold.magenta("\n * Year the movie came out: ") + response.data.Year);
+       console.log(chalk.bold.cyan("\n * IMDB Rating: ") + response.data.Ratings[0].Value);
+       console.log(chalk.bold.yellow("\n * Rotten Tomatoes Rating: ") + response.data.Ratings[1].Value);
+       console.log(chalk.bold.magenta("\n * Country where the movie was produced: ") + response.data.Country);
+       console.log(chalk.bold.white("\n * Language(s): ") + response.data.Language);
+       console.log(chalk.bold.blue("\n * Plot of the movie: ") + response.data.Plot);
+       console.log(chalk.bold.green("\n * Actors: ") + response.data.Actors + "\n");
        console.log(chalk.whiteBright.bgMagenta("-------------------------------------------\n"));
      })
-//otherwise log error - Follow the docs.
+//otherwise log error - Followhe docs.
    .catch(function (error) {
-     console.log('Hello - Movie function')
      console.log(chalk.red(error));
     //  loggingAllData(error);
    }
    );
-
 }
+function concert(band)
+{ 
+    var queryUrl = "https://rest.bandsintown.com/artists/" + band.split(" ").join("+") + "/events?app_id=codingbootcamp";
+    axios.get(queryUrl)
+    console.log(queryUrl);
+    .then (function (response) {
+        console.log(chalk.whiteBright.bgMagenta("-----------------------------------------\n"));
+        console.log(chalk.bold.blue("\n * Name of the venue: ") + response.data.venue)
+
+
+
+
+
+
+    }
+
+    .catch(function (error) {
+        console.log(chalk.red(error));    
+        }
+})
 
