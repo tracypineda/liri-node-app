@@ -25,10 +25,10 @@ The following packages were installed to create this APP.
 
 ## The working APP
 
-* [Band](../assets/band) - Band app working 
-* [Spotify](../assets/spotify) - Spotify app working
-* [Movie](../assets/movie) - Movie app working
-* [Do_what_it_says](../assets/do) - Do what it says app working
+* [Band](./assets/band.gif) - Band app working 
+* [Spotify](./assets/spotify.gif) - Spotify app working
+* [Movie](./assets/movie.gif) - Movie app working
+* [Do_what_it_says](./assets/do.gif) - Do what it says app working
 
 
 ## Authors
