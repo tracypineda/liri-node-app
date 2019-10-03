@@ -58,8 +58,11 @@ switch (command) {
         }
         concert(inputPara);
         break;
+    case "do-what-it-says":
+        doWhatItSays();
+        break;
     default:
-        console.log(chalk.bold.bgRed("{Please enter a command: spotify, movie, or band"));
+        console.log(chalk.bold.bgRed("{Please enter a command: spotify, movie, band or do-what-it-says"));
         break;
 }
 
@@ -123,12 +126,12 @@ function concert(band) {
             }
 
             for (var i = 0; i < loopCount; i++) {
-                console.log(chalk.whiteBright.bgBlueBright("---------------EVENT Details ---------------\n"));
+                console.log(chalk.whiteBright.bgBlue("---------------EVENT Details ---------------\n"));
                 console.log(chalk.bold("Name of the venue: ") + response.data[i].venue.name);
                 console.log(chalk.bold("\n Venue Location: ") + response.data[i].venue.city);
                 //Using Moment to format Date 
                 console.log(chalk.bold("\n Date of the Event: ") + moment(response.data[i].datetime).format('MM-DD-YYYY'));
-                console.log(chalk.whiteBright.bgBlueBright("----------------------------------------\n"));
+                console.log(chalk.whiteBright.bgBlue("----------------------------------------\n"));
             }
         })
         .catch(function (error) {
@@ -136,4 +139,17 @@ function concert(band) {
         }
         );
 }
-//
+function doWhatItSays() {
+    console.log("doWhatItSays");
+    //reads values from random.txt file
+    fs.readFile("random.txt", "utf8", function (error, data)
+    {
+//    reading data from the file
+        console.log(data); 
+    var dataArr = data.split(",");
+   // We are passing the song name from split array
+   if (dataArr[1] !== '') {
+     spotifySong(dataArr[1]);
+   }
+   });
+}
