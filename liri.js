@@ -45,20 +45,22 @@ switch (command) {
         break;
 
     case "movie":
-        if (inputPara) {
-            omdbData(inputPara);
-        } else {
-            console.log("pick a movie");
+        if (inputPara == undefined || inputPara == "") {
+            inputPara = "Frozen";
         }
+        omdbData(inputPara);
         break;
+
     case "band":
-        if(inputPara == undefined || inputPara == "") {
-            inputPara = "The Jonas Brothers";
+        if (inputPara == undefined || inputPara == "") {
+            inputPara = "Casting Crows";
         }
-    default:
-        console.log("{Please enter a command: spotify, movie, or band ");
+        concert(inputPara);
         break;
-    }
+    default:
+        console.log(chalk.bold.bgRed("{Please enter a command: spotify, movie, or band"));
+        break;
+}
 
 function spotifySong(song) {
     spotify.search({ type: 'track', query: song, limit: 1 }, function (error, data) {
@@ -78,54 +80,46 @@ function spotifySong(song) {
             console.log('Error!');
         }
     });
-
-    
 };
 
 function omdbData(movie) {
     var queryUrl = "http://www.omdbapi.com/?t=" + movie.split(' ').join('+') + "&y=&plot=short&apikey=trilogy";
     console.log(movie.split(' ').join('+'));
-    
+
     axios.get(queryUrl)
-   .then(function (response) {
-       // If the axios was successful...
-       // Then log the body from the site!
-       console.log(chalk.whiteBright.bgMagenta("-----------------------------------------\n"));
-       console.log(chalk.bold.green("\n * Title of the movie: ") + response.data.Title);
-       console.log(chalk.bold.magenta("\n * Year the movie came out: ") + response.data.Year);
-       console.log(chalk.bold.cyan("\n * IMDB Rating: ") + response.data.Ratings[0].Value);
-       console.log(chalk.bold.yellow("\n * Rotten Tomatoes Rating: ") + response.data.Ratings[1].Value);
-       console.log(chalk.bold.magenta("\n * Country where the movie was produced: ") + response.data.Country);
-       console.log(chalk.bold.white("\n * Language(s): ") + response.data.Language);
-       console.log(chalk.bold.blue("\n * Plot of the movie: ") + response.data.Plot);
-       console.log(chalk.bold.green("\n * Actors: ") + response.data.Actors + "\n");
-       console.log(chalk.whiteBright.bgMagenta("-------------------------------------------\n"));
-     })
-//otherwise log error - Followhe docs.
-   .catch(function (error) {
-     console.log(chalk.red(error));
-    //  loggingAllData(error);
-   }
-   );
+        .then(function (response) {
+            // If the axios was successful...
+            // Then log the body from the site!
+            console.log(chalk.whiteBright.bgMagenta("-----------------------------------------\n"));
+            console.log(chalk.bold.green("\n * Title of the movie: ") + response.data.Title);
+            console.log(chalk.bold.magenta("\n * Year the movie came out: ") + response.data.Year);
+            console.log(chalk.bold.cyan("\n * IMDB Rating: ") + response.data.Ratings[0].Value);
+            console.log(chalk.bold.yellow("\n * Rotten Tomatoes Rating: ") + response.data.Ratings[1].Value);
+            console.log(chalk.bold.magenta("\n * Country where the movie was produced: ") + response.data.Country);
+            console.log(chalk.bold.white("\n * Language(s): ") + response.data.Language);
+            console.log(chalk.bold.blue("\n * Plot of the movie: ") + response.data.Plot);
+            console.log(chalk.bold.green("\n * Actors: ") + response.data.Actors + "\n");
+            console.log(chalk.whiteBright.bgMagenta("-------------------------------------------\n"));
+        })
+        //otherwise log error - Followhe docs.
+        .catch(function (error) {
+            console.log(chalk.red(error));
+            //  loggingAllData(error);
+        }
+        );
 }
-function concert(band)
-{ 
+function concert(band) {
     var queryUrl = "https://rest.bandsintown.com/artists/" + band.split(" ").join("+") + "/events?app_id=codingbootcamp";
     axios.get(queryUrl)
-    console.log(queryUrl);
-    .then (function (response) {
-        console.log(chalk.whiteBright.bgMagenta("-----------------------------------------\n"));
-        console.log(chalk.bold.blue("\n * Name of the venue: ") + response.data.venue)
-
-
-
-
-
-
-    }
-
-    .catch(function (error) {
-        console.log(chalk.red(error));    
+        .then(function (response) {
+            console.log(chalk.whiteBright.bgMagenta("-----------------------------------------\n"));
+            console.log(chalk.bold.blue("\n * Name of the venue: ") + response.data.venue.name)
+            console.log(chalk.bold.cyan("\n * Venue Location: ") + response.data.venue.city)
+            console.log(chalk.bold.blue("\n * Date of Event: ") + response.data.datetime)
+        })
+        .catch(function (error) {
+            console.log(chalk.red(error));
         }
-})
+        );
+}
 
