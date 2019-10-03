@@ -34,7 +34,7 @@ var command = process.argv[2];
 //movie or song
 //attaches multiple word arguments
 var inputPara = process.argv.slice(3).join(" ");
-console.log(inputPara);
+console.log(chalk.bold.magenta("You searched for: ") + inputPara);
 //switch case
 switch (command) {
     case "spotify":
@@ -140,7 +140,7 @@ function concert(band) {
         );
 }
 function doWhatItSays() {
-    console.log("doWhatItSays");
+    console.log("do-what-it-says");
     //reads values from random.txt file
     fs.readFile("random.txt", "utf8", function (error, data)
     {
