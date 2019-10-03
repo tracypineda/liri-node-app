@@ -3,6 +3,7 @@ require("dotenv").config();
 // Import the node-spotify-api NPM package.
 var Spotify = require("node-spotify-api");
 var axios = require("axios");
+var moment = require("moment");
 // Import the API keys
 // var keys = require("./keys");
 // Import the request npm package.
@@ -112,14 +113,27 @@ function concert(band) {
     var queryUrl = "https://rest.bandsintown.com/artists/" + band.split(" ").join("+") + "/events?app_id=codingbootcamp";
     axios.get(queryUrl)
         .then(function (response) {
-            console.log(chalk.whiteBright.bgMagenta("-----------------------------------------\n"));
-            console.log(chalk.bold.blue("\n * Name of the venue: ") + response.data.venue.name)
-            console.log(chalk.bold.cyan("\n * Venue Location: ") + response.data.venue.city)
-            console.log(chalk.bold.blue("\n * Date of Event: ") + response.data.datetime)
+
+            var loopCount = 0;  //Limit DAT to 5 EVENTS MAX 
+            if (response.data.length > 5) {
+                loopCount = 5;
+            }
+            else {
+                loopCount = response.data.length;
+            }
+
+            for (var i = 0; i < loopCount; i++) {
+                console.log(chalk.whiteBright.bgBlueBright("---------------EVENT Details ---------------\n"));
+                console.log(chalk.bold("Name of the venue: ") + response.data[i].venue.name);
+                console.log(chalk.bold("\n Venue Location: ") + response.data[i].venue.city);
+                //Using Moment to format Date 
+                console.log(chalk.bold("\n Date of the Event: ") + moment(response.data[i].datetime).format('MM-DD-YYYY'));
+                console.log(chalk.whiteBright.bgBlueBright("----------------------------------------\n"));
+            }
         })
         .catch(function (error) {
             console.log(chalk.red(error));
         }
         );
 }
-
+//
