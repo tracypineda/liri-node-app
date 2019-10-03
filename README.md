@@ -15,12 +15,12 @@ Since this assignment is done exclusively in the terminal using node, there is n
 ### Installed Packages
 
 The following packages were installed to create this APP.
-*Node Spotify API
-*Axios (used to call the following APIs)
-    *OMDB 
-    *Bands in Town
-*Moment
-*DotEnv
+* Node Spotify API
+* Axios (used to call the following APIs)
+    * OMDB 
+    * Bands in Town
+* Moment
+* DotEnv
 
 
 ## The working APP
