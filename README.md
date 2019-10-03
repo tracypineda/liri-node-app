@@ -8,9 +8,9 @@ In this assignment, I made LIRI. LIRI is like iPhone's SIRI. However, while SIRI
 Since this assignment is done exclusively in the terminal using node, there is no deployable site.  Below you will find links to the gifs showing the functionality of the APP.
 
 
-```
+## Git Hub Pages
 
-```
+* [GitHub_Site](https://tracypineda.github.io/liri-node-app/)
 
 ### Installed Packages
 
@@ -25,35 +25,13 @@ The following packages were installed to create this APP.
 
 ## The working APP
 
-*links to the gifs here
+* [Band](../assets/band) - Band app working 
+* [Spotify](../assets/spotify) - Spotify app working
+* [Movie](../assets/movie) - Movie app working
+* [Do_what_it_says](../assets/do) - Do what it says app working
 
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+**Tracy Pineda** - *- [Portfolio](https://tracypineda.github.io/Bootstrap-Portfolio/)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
